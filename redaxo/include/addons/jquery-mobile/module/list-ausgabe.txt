@@ -1,0 +1,41 @@
+<?php 
+$class = '';
+if('REX_VALUE[2]' == 0 || 'REX_VALUE[2]' == '') {
+	$class = ' class="no-wordwrap"';
+}
+$icon_pos = 'data-iconpos="'.'REX_VALUE[3]'.'"';
+?>
+<div class="space"></div>
+<ul data-role="listview" <?php echo $class; ?> data-theme="REX_VALUE[1]">
+<?php	
+	$name = explode('|-|', 'REX_VALUE[10]');
+	$bild = explode('|-|', 'REX_VALUE[11]');
+	$link = explode('|-|', 'REX_VALUE[12]');
+	$text = explode('|-|', 'REX_VALUE[13]');
+	$icon = explode('|-|', 'REX_VALUE[14]');
+	$list_max = count($name);
+	
+	for($i = 0; $i < $list_max; $i++) {
+		echo '<li data-icon="'.$icon[$i].'" '.$icon_pos.'>';
+		
+		if(is_numeric($link[$i])) {
+			$ar = rex_sql::factory();
+ 			$ar->setQuery('SELECT name FROM '.$REX['TABLE_PREFIX'].'article WHERE id='.$link[$i]);
+			echo '<a href="#'.$ar->getValue('name').'">';
+		} elseif($link[$i] == '#') {
+			echo '<a href="#">';	
+		}
+		
+		if($bild[$i] != '') echo '<img src="files/'.$bild[$i].'" alt="'.htmlentities($name[$i]).'" alt="'.htmlentities($name[$i]).'" />';
+		echo '<h3>'.stripslashes($name[$i]).'</h3>';
+		echo '<p>'.stripslashes($text[$i]).'</p>';
+		
+		if(is_numeric($link[$i]) ||$link[$i] == '#') {
+			echo '</a>';
+		}
+		
+		echo '</li>';
+	}
+?>	
+</ul>
+<div class="space"></div>

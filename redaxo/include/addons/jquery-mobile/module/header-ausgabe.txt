@@ -1,0 +1,24 @@
+<?php 
+$fixed = '';
+$back = '';
+if('REX_VALUE[1]' == 1 || 'REX_VALUE[1]' == '') {
+	$fixed = 'data-position="fixed"';
+}
+if('REX_VALUE[2]' == 1 || 'REX_VALUE[2]' == '') {
+	$back = '<a data-role="button" data-rel="back" data-theme="b" data-mini="true" data-iconpos="notext" data-icon="back" class="ui-btn-left"></a>';
+}
+?>
+<div data-role="header" <?php echo $fixed; ?>>	
+	<?php echo $back; ?>	
+	<h1>REX_VALUE[3]</h1>
+	<a data-role="button" data-theme="b" data-mini="true" data-iconpos="notext" data-icon="grid" class="ui-btn-right" href="#navigation"></a>
+</div>
+<?php
+if(!$REX['REDAXO']) {
+	echo jquery_mobile::getNavigation();
+}
+?>
+<div data-role="content">
+<?php
+if($REX['REDAXO']) echo '</div>';
+?>

@@ -1,0 +1,87 @@
+.sy_block {
+	clear:both;
+	margin:10px 20px;
+}
+
+.sy_content {
+	background:#dfe9e9;
+	clear:both;
+	padding:10px 20px;
+	border-bottom:1px solid #c6cece;
+}
+
+
+.sy_label {
+	float:left;
+	background:#2c8eca;
+	border-bottom:1px solid #084d78;
+	line-height:32px;
+	color:#fff;
+	padding:0px 10px;
+	width:130px;
+	margin:0px 1px 0px 0px;
+	cursor:pointer;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+
+.sy_block .inaktiv {
+	background:#407da3;
+}
+
+.sy_block label {
+	font-weight:bold;
+	display:block !important;
+	clear:both !important;
+	margin:8px -10px !important;
+}
+
+.sy_block input[type=text], .sy_block input[type=password] {
+	height:25px;
+	line-height:25px;
+	width:100%;
+}
+
+.sy_block textarea, .sy_block select {
+	width:100%;
+}
+
+.sy-form .rex-form {
+	margin:0px 0px 20px 0px;
+}
+
+.icon-mobile {
+	padding:6px 9px !important;
+}
+
+.icon-mobile span {
+	background:url(icons-18-black.png);
+	display:block;
+	height:18px;
+	width:18px;
+	text-indent:-1000em;
+	font-size:0;
+}
+
+.icon-mobile .plus { background-position:-0px 0px; }
+.icon-mobile .minus { background-position:-36px 0px; }
+.icon-mobile .delete { background-position:-72px 0px; }
+.icon-mobile .arrow-r { background-position:-108px 0px; }
+.icon-mobile .arrow-l { background-position:-144px 0px; }
+.icon-mobile .arrow-u { background-position:-180px 0px; }
+.icon-mobile .arrow-d { background-position:-216px 0px; }
+.icon-mobile .check { background-position:-252px 0px; }
+.icon-mobile .gear { background-position:-288px 0px; }
+.icon-mobile .refresh { background-position:-324px 0px; }
+.icon-mobile .forward { background-position:-360px 0px; }
+.icon-mobile .back { background-position:-396px 0px; }
+.icon-mobile .grid { background-position:-432px 0px; }
+.icon-mobile .star { background-position:-468px 0px; }
+.icon-mobile .alert { background-position:-504px 0px; }
+.icon-mobile .info { background-position:-540px 0px; }
+.icon-mobile .home { background-position:-576px 0px; }
+.icon-mobile .search { background-position:-612px 0px; }
+.icon-mobile .bars { background-position:-788px 0px; }
+.icon-mobile .edit { background-position:-824px 0px; }
+.icon-mobile .false { background:none; }

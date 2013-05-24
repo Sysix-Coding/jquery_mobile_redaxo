@@ -1,0 +1,32 @@
+<?php 
+if(!isset($galerie_id)) {
+	$galerie_id = 0;
+}
+$galerie_id++;
+?>
+<ul class="gallery" id="gallery_slider_<?php echo $galerie_id; ?>">
+<?php	
+
+	$images = explode(',', 'REX_MEDIALIST[1]');
+	foreach($images as $key => $value)  {
+		echo '<li>';
+				
+		$meta = OOMedia::getMediaByFileName($value);
+		$alt = ($meta->getValue('title') != "") ? 'alt="'.$meta->getValue('title').'"' : '';
+		$title = ($meta->getValue('title') != "") ? 'title="'.$meta->getValue('title').'"' : '';
+		echo '<a href="index.php?rex_img_type='.'REX_VALUE[2]'.'&rex_img_file='.$value.'" >';
+		echo '<img src="index.php?rex_img_type='.'REX_VALUE[1]'.'&rex_img_file='.$value.'" border="0" '.$alt.$title.'/>';
+		echo '</a>';
+		
+		
+		echo '</li>';
+	}
+?>	
+</ul>
+<script type="text/javascript">
+(function(window, $, PhotoSwipe){			
+	$(document).ready(function(){				
+		$("#gallery_slider_<?php echo $galerie_id; ?> a").photoSwipe();	
+	});			
+}(window, window.jQuery, window.Code.PhotoSwipe));
+</script>

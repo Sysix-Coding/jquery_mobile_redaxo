@@ -1,0 +1,45 @@
+<script type="text/javascript">
+var name = 'Bild';
+</script>
+<?php
+jquery_mobile::backendJS();
+$selector_1 = 'REX_VALUE[1]';  # Resize Klein
+$selector_2 = 'REX_VALUE[2]'; # Resize Groß
+
+?>
+<div class="sy_block">
+	<div class="sy_label">Einstellungen:</div>
+	<div class="sy_content">
+		<label>Resize Kleines Bild</label>
+		<select name="VALUE[1]">
+		<?php
+			$sql = new sql;
+			$sql->setQuery('SELECT name, description FROM rex_679_types');
+		   
+			for($i = 0; $i < $sql->getRows(); $i++, $sql->next()) {
+				$selected = ($sql->getValue('name') == $selector_1) ? 'selected="selected"' : '';
+				echo '<option value="'.$sql->getValue('name').'" '.$selected.'>'.$sql->getValue('description').'</option>';
+			}
+		?>
+		</select>
+		<label>Resize Großes Bild</label>
+		<select name="VALUE[2]">
+		<?php
+			$sql = new sql;
+			$sql->setQuery('SELECT name, description FROM rex_679_types');
+		   
+			for($i = 0; $i < $sql->getRows(); $i++, $sql->next()) {
+				$selected = ($sql->getValue('name') == $selector_2) ? 'selected="selected"' : '';
+				echo '<option value="'.$sql->getValue('name').'" '.$selected.'>'.$sql->getValue('description').'</option>';
+			}
+		?>
+		</select>
+	</div>
+</div>
+
+<div class="sy_block" id="sy_navi">
+	<div class="sy_label">Bildergalerie</div>
+	<div class="sy_content">
+	REX_MEDIALIST_BUTTON[1]
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<script type="text/javascript">
+var name = ''; // Wird hier nicht gebraucht
+</script>
+<?php
+jquery_mobile::backendJS();
+
+$selector_1 = 'REX_VALUE[1]';
+
+$select_array_1 = array(
+	'a' => 'Thema A',
+	'b' => 'Thema B',
+	'c' => 'Thema C',
+	'd' => 'Thema D',
+	'e' => 'Thema E',
+	'f' => 'Thema F'
+);
+
+?>
+<div class="sy_block">
+	<div class="sy_label">Einstellungen:</div>
+	<div class="sy_content">
+		<label>Thema-Style</label>
+		<select name="VALUE[1]">
+			<?php
+			$x = 0;
+			foreach($select_array_1 as $key=>$val) {
+				$selected = ($selector_1 == $key) ? 'selected="selected"' : '';
+				echo '<option value="'.$key.'" '.$selected.'>'.$val.'</option>';
+			}
+			?>
+		</select>
+	</div>
+</div>
+
+<div class="sy_block">
+	<div class="sy_label">Überschrift:</div>
+	<div class="sy_label inaktiv">Zusatzinfo:</div>
+	<div class="sy_content">
+		<input type="text" name="VALUE[2]" value="REX_VALUE[2]" />
+	</div>
+	<div class="sy_content" style="display:none">
+		<input type="text" name="VALUE[3]" value="REX_VALUE[3]" />
+	</div>
+</div>

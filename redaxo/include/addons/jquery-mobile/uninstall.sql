@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS `%TABLE_PREFIX%888_jquery_mobile`;
+DROP TABLE IF EXISTS `%TABLE_PREFIX%888_jquery_mobile_navi`;

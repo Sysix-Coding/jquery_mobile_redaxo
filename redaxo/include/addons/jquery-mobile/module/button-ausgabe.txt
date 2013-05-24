@@ -1,0 +1,9 @@
+<?php 
+$rex_value3 = '';
+if('REX_VALUE[3]' != '') {
+	$rex_value3 = '<br /><small>'.'REX_VALUE[3]'.'</small>';	
+}?>
+
+<div data-role="button" data-theme="REX_VALUE[1]">
+	REX_VALUE[2]<?php echo $rex_value3; ?>
+</div>

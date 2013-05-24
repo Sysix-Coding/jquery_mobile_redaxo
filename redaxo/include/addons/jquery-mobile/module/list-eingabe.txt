@@ -1,0 +1,187 @@
+<script type="text/javascript">
+var name = 'Item';
+</script>
+<?php
+jquery_mobile::backendJS();
+
+$selector_1 = 'REX_VALUE[1]';  # Thema Style
+$selector_2 = 'REX_VALUE[2]'; # Text verkürzen
+
+$select_array_1 = array(
+	'a' => 'Thema A',
+	'b' => 'Thema B',
+	'c' => 'Thema C',
+	'd' => 'Thema D',
+	'e' => 'Thema E',
+	'f' => 'Thema F'
+);
+
+$select_array_2 = array(
+	'right' => 'Rechts',
+	'bottom' => 'Unten',
+	'left' => 'Links',
+	'top' => 'Oben'
+);
+
+$select_array_3 = array(
+	'bars'=>'Bars',
+	'edit'=>'Editieren',
+	'arrow-l'=>'Pfeil Links',
+	'arrow-r'=>'Pfeil Rechts',
+	'arrow-u'=>'Pfeil Oben',
+	'arrow-d'=>'Pfeil Unten',
+	'delete'=>'Löschen',
+	'plus'=>'Plus Zeichen',
+	'minus'=>'Minus Zeichen',
+	'check'=>'Check',
+	'gear'=>'Getriebe',
+	'refresh'=>'Refresh',
+	'forward'=>'Vorwärts',
+	'back'=>'Zurück',
+	'grid'=>'Grid',
+	'star'=>'Stern',
+	'alert'=>'Warnung',
+	'info'=>'Info',
+	'home'=>'Haus',
+	'search'=>'Suchlupe',
+	'false'=>'--KEIN ICON'
+);
+
+$radio_button = array(array());
+$radio_button[0][0] = '';
+$radio_button[0][1] = '';
+
+if($selector_2 == 1 || $selector_2 == '') {
+	$radio_button[0][1] = 'checked="checked"';
+} else {
+	$radio_button[0][0] = 'checked="checked"';
+}
+
+#####
+
+if('REX_VALUE[10]' == '' && 'REX_VALUE[11]' == '' && 'REX_VALUE[12]' == '' && 'REX_VALUE[13]' == '' && 'REX_VALUE[14]' == '') {
+	$name = array('Item #1');
+	$bild = array('');
+	$link = array('');
+	$text = array('');
+	$icon = array('arrow-r');	
+} else {
+	$name = explode('|-|', 'REX_VALUE[10]');
+	$bild = explode('|-|', 'REX_VALUE[11]');
+	$link = explode('|-|', 'REX_VALUE[12]');
+	$text = explode('|-|', 'REX_VALUE[13]');
+	$icon = explode('|-|', 'REX_VALUE[14]');
+}
+$list_max = count($name);
+
+$output = array();
+for($i = 0; $i < $list_max; $i++) {
+	$output[$i] = '<label>Thumbsbild</label>';
+	$output[$i] .='<div class="rex-widget">
+      <div class="rex-widget-media">
+        <p class="rex-widget-field">
+          <input size="30" name="list[bild][]" id="REX_MEDIA_'.$i.'" readonly="readonly" type="text" value="'.$bild[$i].'" />
+        </p>
+        <p class="rex-widget-icons rex-widget-1col">
+          <span class="rex-widget-column rex-widget-column-first">
+            <a href="#" class="rex-icon-file-open" onclick="openREXMedia('.$i.',\'\');return false;" title="Medium auswählen" tabindex="18"></a>
+            <a href="#" class="rex-icon-file-add" onclick="addREXMedia('.$i.',\'\');return false;" title="Neues Medium hinzufügen" tabindex="19"></a>
+            <a href="#" class="rex-icon-file-delete" onclick="deleteREXMedia('.$i.');return false;" title="Ausgewähltes Medium löschen" tabindex="20"></a>
+            <a href="#" class="rex-icon-file-view" onclick="viewREXMedia('.$i.',\'\');return false;" title="Ausgewähltes Medium anzeigen" tabindex="21"></a>
+          </span>
+        </p>
+        <div class="rex-media-preview"></div>
+      </div>
+    </div>
+	<div class="rex-clearer"></div>
+	';
+	$output[$i] .= '<label>Titel</label>';
+	$output[$i] .= '<input type="text" name="list[name][]" value="'.$name[$i].'" class="navi_name" />';
+	$output[$i] .= '<label>Text</label>';
+	$output[$i] .= '<textarea name="list[text][]" rows="4" cols="20">'.stripslashes($text[$i]).'</textarea>';
+	$output[$i] .= '<label>Verlinkt zu</label>';
+	if(is_numeric($link[$i])) {
+		$ar = rex_sql::factory();
+    	$ar->setQuery('SELECT name FROM '.$REX['TABLE_PREFIX'].'article WHERE id='.$link[$i]);
+		$link_value = $ar->getValue('name');
+	} else {
+		$link_value = '';
+	}
+	$output[$i] .= '<div class="rex-widget">
+    <div class="rex-widget-link">
+      <p class="rex-widget-field">
+        <input name="list[link][]" id="LINK_'.$i.'" value="'.$link[$i].'" type="hidden">
+        <input size="30" name="LINK_NAME['.$i.']" value="'.$link_value.'" id="LINK_'.$i.'_NAME" readonly="readonly" type="text">
+      </p>
+       <p class="rex-widget-icons rex-widget-1col">
+        <span class="rex-widget-column rex-widget-column-first">
+          <a href="#" class="rex-icon-file-open" onclick="openLinkMap(\'LINK_'.$i.'\', \'&amp;clang=0&amp;category_id=0\');return false;" title="Link auswählen" tabindex="18"></a>
+          <a href="#" class="rex-icon-file-delete" onclick="deleteREXLink('.$i.');return false;" title="Ausgewählten Link löschen" tabindex="19"></a>
+        </span>
+      </p>
+    </div>
+  </div>';
+	//$output[$i] .= '<input type="text" name="list[link][]" value="'.$link[$i].'" />';
+	$output[$i] .= '<label>Icon</label>';
+	$output[$i] .= '<select name="list[icon][]">';
+	foreach($select_array_3 as $key=>$val) {
+		$selected = ($icon[$i] == $key) ? 'selected="selected"' : '';
+		$output[$i] .= '<option value="'.$key.'" '.$selected.'>'.$val.'</option>';	
+	}
+	$output[$i] .= '</select>';
+	
+}
+
+
+?>
+<div class="sy_block">
+	<div class="sy_label">Einstellungen:</div>
+	<div class="sy_content">
+		<label>Thema-Style</label>
+		<select name="VALUE[1]">
+			<?php
+			$x = 0;
+			foreach($select_array_1 as $key=>$val) {
+				$selected = ($selector_1 == $key) ? 'selected="selected"' : '';
+				echo '<option value="'.$key.'" '.$selected.'>'.$val.'</option>';
+			}
+			?>
+		</select>
+		<label>Text automatisch verkürzen</label>
+		<input type="radio" name="VALUE[2]" value="1" <?php echo $radio_button[0][1]; ?> /> Ja <input type="radio" name="VALUE[2]" value="0" <?php echo $radio_button[0][0]; ?> /> Nein
+		<label>Icon-Position</label>
+		<select name="VALUE[3]">
+			<?php
+			$x = 0;
+			foreach($select_array_2 as $key=>$val) {
+				$selected = ($selector_2 == $key) ? 'selected="selected"' : '';
+				echo '<option value="'.$key.'" '.$selected.'>'.$val.'</option>';
+			}
+			?>
+		</select>
+	</div>
+</div>
+
+<div class="sy_block" id="sy_navi">
+	<?php
+	$x = 0;
+	foreach($name as $out) {
+		$style = ($x > 0) ? 'inaktiv' : '';
+		echo '<div class="sy_label '.$style.'">'.$out.'</div>';
+		$x++;
+	}
+	?>
+	<div class="sy_label inaktiv small" id="sy_add">+</div>
+	<?php
+	$x = 0;
+	foreach($output as $out) {
+		$style = ($x > 0) ? 'style="display:none"' : '';
+		echo '<div class="sy_content" '.$style.'>';
+		echo $out;
+		if($x > 0) 
+			echo '<div class="rex-button"><input type="button" value="Item löschen" class="submit sy_del_block" /></div>';
+		echo '</div>';
+		$x++;
+	}
+	?>
+</div>
