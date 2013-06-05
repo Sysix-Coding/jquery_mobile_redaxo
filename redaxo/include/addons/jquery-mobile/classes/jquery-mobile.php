@@ -105,27 +105,19 @@ class jquery_mobile {
 			global $REX;
 			
 			
-			$return = '
-			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
-			';
-			
-			$return .= '<link rel="stylesheet" href="'.$REX['MEDIA_ADDON_DIR'].'/'.self::mypage.'/css/photoswipe.css" />
-			';
-			
-			
-			$return .= '<script type="text/javascript" src="'.$REX['MEDIA_ADDON_DIR'].'/'.self::mypage.'/js/klass.min.js"></script>
-			';
+			$return = PHP_EOL.'<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />'.PHP_EOL;			
+			$return .= '<link rel="stylesheet" href="'.$REX['MEDIA_ADDON_DIR'].'/'.self::mypage.'/css/photoswipe.css" />'.PHP_EOL;			
+			$return .= '<script type="text/javascript" src="'.$REX['MEDIA_ADDON_DIR'].'/'.self::mypage.'/js/klass.min.js"></script>'.PHP_EOL;
 			
 			$sql = rex_sql::factory();
 			$sql->setQuery('SELECT * FROM '.$REX['TABLE_PREFIX'].self::rx_id.self::table.' WHERE id=1');
 			
-			if($sql->getValue('jquery-core') == 1 && $core == true) $return .='<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-			';
-			if($sql->getValue('jquery-mobile') == 1 && $mobile == true) $return .='<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-			';
+			if($sql->getValue('jquery-core') == 1 && $core == true) 
+				$return .='<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>'.PHP_EOL;
+			if($sql->getValue('jquery-mobile') == 1 && $mobile == true) 
+				$return .='<script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>'.PHP_EOL;
 
-			$return .= '<script type="text/javascript" src="'.$REX['MEDIA_ADDON_DIR'].'/'.self::mypage.'/js/code.photoswipe.jquery-3.0.5.min.js"></script>
-			';
+			$return .= '<script type="text/javascript" src="'.$REX['MEDIA_ADDON_DIR'].'/'.self::mypage.'/js/code.photoswipe.jquery-3.0.5.min.js"></script>'.PHP_EOL;
 			
 			return $return;
 			
