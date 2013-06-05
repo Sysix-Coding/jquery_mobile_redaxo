@@ -1,14 +1,19 @@
 <?php
-// Presave-Action - ADD - EDIT
-	$name = implode('|-|', $_POST['list']['name']);
-	$bild = implode('|-|', $_POST['list']['bild']);
-	$link = implode('|-|', $_POST['list']['link']);
-	$text = implode('|-|', $_POST['list']['text']);
-	$icon = implode('|-|', $_POST['list']['icon']);
-	
-	$REX_ACTION['VALUE'][10] = $name;
-	$REX_ACTION['VALUE'][11] = $bild;
-	$REX_ACTION['VALUE'][12] = $link;
-	$REX_ACTION['VALUE'][13] = $text;
-	$REX_ACTION['VALUE'][14] = $icon;
+
+	// Preview-Action - ALL
+	// Presave-Action - ALL
+
+	if(isset($_POST['list'])) {
+		$name = implode('|-|', $_POST['list']['name']);
+		$bild = implode('|-|', $_POST['list']['bild']);
+		$link = implode('|-|', $_POST['list']['link']);
+		$text = implode('|-|', $_POST['list']['text']);
+		$icon = implode('|-|', $_POST['list']['icon']);
+		
+		$REX_ACTION['VALUE'][10] = $name;
+		$REX_ACTION['VALUE'][11] = $bild;
+		$REX_ACTION['VALUE'][12] = $link;
+		$REX_ACTION['VALUE'][13] = $text;
+		$REX_ACTION['VALUE'][14] = $icon;
+	}
 ?>
