@@ -1,8 +1,8 @@
 <?php 
 $field_id = rex_request('id', 'int');
-$mypage = 'jquery-mobile';
+$mypage = 'jquery_mobile';
 $rx_id = '888';
-$mobile_table = $REX['TABLE_PREFIX'].$rx_id.'_jquery_mobile_navi'; 
+$mobile_table = $REX['TABLE_PREFIX'].$rx_id.'_'.$mypage.'_navi'; 
 
 if ($func == 'status' && $field_id != '') {
 	

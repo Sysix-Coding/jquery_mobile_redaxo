@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `%TABLE_PREFIX%888_jquery_mobile` (
   `navigation` varchar(10) NOT NULL,
   `jquery-core` int(1) NOT NULL,
   `jquery-mobile` int(1) NOT NULL,
-  `default-thema` varchar(1) NOT NULL;
+  `default-thema` varchar(1) NOT NULL,
   `navi-scroll` int(1) NOT NULL,
   `navi-thema` varchar(1) NOT NULL,
   PRIMARY KEY  (`id`)

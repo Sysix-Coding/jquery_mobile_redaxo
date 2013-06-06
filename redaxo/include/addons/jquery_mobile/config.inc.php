@@ -1,5 +1,5 @@
 <?php
-$mypage = 'jquery-mobile';
+$mypage = 'jquery_mobile';
 
 $REX['ADDON']['rxid'][$mypage] = '888';
 $REX['ADDON']['page'][$mypage] = $mypage;    

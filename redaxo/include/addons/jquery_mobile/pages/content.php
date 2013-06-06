@@ -1,8 +1,8 @@
 <?php
 
-$mypage = 'jquery-mobile';
+$mypage = 'jquery_mobile';
 $rx_id = '888';
-$mobile_table = $REX['TABLE_PREFIX'].$rx_id.'_jquery_mobile';
+$mobile_table = $REX['TABLE_PREFIX'].$rx_id.'_'.$mypage;
 
 $THEMA_STYLE = array(
 	'a' => 'Thema A',
