@@ -13,6 +13,14 @@ $THEMA_STYLE = array(
 	'f' => 'Thema F'
 );
 
+$message = stripslashes(rex_request('_msg', 'string'));
+$warning = stripslashes(rex_request('_warning', 'string'));
+
+if($warning != '') {
+	echo rex_warning($warning). "\n";
+} elseif($message != ''){
+	echo rex_info($message). "\n";
+}
 
 $form = rex_form::factory($mobile_table ,"Jquery-Mobile Standarteinstellungen",'id=1','post', false);
 
