@@ -2,7 +2,8 @@
 // ANlegen einiger Variablen
 $Basedir = dirname(__FILE__);
 $page = rex_request('page', 'string');
-$subpage = rex_request('subpage', 'string', 'content');
+$subpage = rex_request('subpage', 'string');
+if($subpage == '') $subpage = 'content';
 $func = rex_request('func', 'string');
 
 // Seitenheader von REDAXO includen
