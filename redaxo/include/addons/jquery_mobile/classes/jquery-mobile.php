@@ -5,7 +5,7 @@ class jquery_mobile {
 		const rx_id = 888;
 		const table = '_jquery_mobile';
 		const table_navi = '_jquery_mobile_navi';
-		const mypage = 'jquery-mobile';
+		const mypage = 'jquery_mobile';
 		
 		// Ausgabe vom Content
 		// int $id = Kategorie ID
