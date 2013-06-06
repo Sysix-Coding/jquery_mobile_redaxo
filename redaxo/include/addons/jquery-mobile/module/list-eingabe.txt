@@ -163,6 +163,7 @@ for($i = 0; $i < $list_max; $i++) {
 </div>
 
 <div class="sy_block" id="sy_navi">
+	<div class="sy_label inaktiv small" id="sy_add_before">+</div
 	<?php
 	$x = 0;
 	foreach($name as $out) {

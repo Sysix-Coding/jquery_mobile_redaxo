@@ -83,7 +83,7 @@ class jquery_mobile {
 		}
 		
 		// Navigationsname herausfinden und als Linkname zurückgeben
-		// Da Jquery-Mobile nicht mit ID´s arbeitet und somit Zahlen nicht funktionieren
+		// Da Jquery-Mobile mit ID´s arbeitet und somit Zahlen nicht funktionieren
 		// http://de.selfhtml.org/html/referenz/attribute.htm#id_idref_name
 		// Statische weil --> http://www.peterkropff.de/site/php/statisches_besonderheiten.htm
 		private static function getNaviName($id) {
